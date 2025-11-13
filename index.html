@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Portfolio — Votre Nom</title>
+  <meta name="description" content="Portfolio professionnel — projets, compétences, contact." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: linear-gradient(180deg,#081427 0%, #071226 45%, #0b1220 100%);
+      --card: rgba(255,255,255,0.06);
+      --glass: rgba(255,255,255,0.04);
+      --accent1: #61dafb;
+      --accent2: #a78bfa;
+      --muted: rgba(255,255,255,0.6);
+      --glass-border: rgba(255,255,255,0.08);
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --fw-heading: 800;
+      --fw-body: 400;
+      color-scheme: dark;
+      --max-width: 1100px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;min-height:100%;font-family:'Inter',system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial;
+      background:var(--bg);color:#eaf6ff;line-height:1.45;
+      -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+      padding:40px 20px;
+      display:flex;justify-content:center;
+    }
+
+    .wrap{width:100%;max-width:var(--max-width);}
+
+    header{
+      display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;
+    }
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{
+      width:56px;height:56px;border-radius:14px;background:linear-gradient(135deg,var(--accent1),var(--accent2));
+      display:grid;place-items:center;font-weight:800;font-family:'JetBrains Mono';color:#042;
+      box-shadow:0 6px 30px rgba(10,20,30,0.5), inset 0 -6px 20px rgba(255,255,255,0.05);
+    }
+    .brand h1{font-size:18px;margin:0}
+    nav{display:flex;gap:12px;align-items:center}
+    nav a{padding:8px 12px;border-radius:10px;text-decoration:none;color:var(--muted);font-weight:600}
+    nav a:hover{color:#fff;transform:translateY(-2px)}
+
+    .controls{display:flex;gap:10px;align-items:center}
+    .btn{background:var(--glass);padding:8px 12px;border-radius:12px;border:1px solid var(--glass-border);cursor:pointer}
+    .btn:hover{transform:translateY(-3px)}
+
+    .hero{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+      border-radius:var(--radius-lg);padding:36px;display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;margin-bottom:28px;
+      border:1px solid var(--glass-border);
+      box-shadow:0 10px 40px rgba(2,6,23,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
+    }
+    .intro h2{font-size:36px;margin:0 0 10px 0;font-weight:var(--fw-heading);letter-spacing:-0.02em}
+    .intro p{color:var(--muted);margin:0 0 18px 0}
+    .cta{display:flex;gap:12px}
+    .primary{background:linear-gradient(90deg,var(--accent1),var(--accent2));padding:12px 18px;border-radius:12px;color:#021;box-shadow:0 8px 30px rgba(102,126,234,0.12);font-weight:700}
+    .secondary{padding:10px 14px;border-radius:12px;border:1px solid var(--glass-border);color:var(--muted);background:transparent}
+
+    .profile{background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));padding:20px;border-radius:14px;border:1px solid rgba(255,255,255,0.02);}
+   .avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 18px;
+  background: url('photo.jpeg') center/cover no-repeat;
+  display: block;
+  margin: 0 auto 12px auto;
+  border: 2px solid rgba(255,255,255,0.1);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+    .title{text-align:center}
+    .title h3{margin:0 0 4px 0}
+    .meta{color:var(--muted);font-size:14px}
+
+    section{margin-bottom:24px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:var(--card);padding:18px;border-radius:14px;border:1px solid var(--glass-border)}
+    .card h4{margin:0 0 8px 0}
+    .muted{color:var(--muted)}
+
+    .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .project{position:relative;overflow:hidden;border-radius:12px;height:220px;background:linear-gradient(120deg, rgba(255,255,255,0.02), rgba(255,255,255,0.0));border:1px solid rgba(255,255,255,0.03);display:flex;flex-direction:column;justify-content:flex-end;padding:14px}
+    .project .meta{font-size:13px}
+    .project .tags{display:flex;gap:8px;margin-top:8px}
+    .tag{padding:6px 8px;border-radius:10px;background:rgba(255,255,255,0.03);font-size:12px}
+    .project .overlay{position:absolute;inset:0;background:linear-gradient(0deg,rgba(2,6,23,0.6),transparent);opacity:0;transition:all .35s}
+    .project:hover .overlay{opacity:1}
+   .project-image {
+  width: 100%;
+  height: 50%;              
+  object-fit: cover;
+  display: block;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+.project:hover .project-image {
+  opacity: 0.45;
+}
+
+    .skills{display:flex;gap:20px;flex-wrap:wrap}
+    .skill{width:120px;height:120px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);display:grid;place-items:center}
+    .skill svg{width:84px;height:84px}
+
+    form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    form input,form textarea{background:transparent;border:1px solid var(--glass-border);padding:12px;border-radius:10px;color:inherit}
+    form textarea{grid-column:span 2;min-height:120px}
+    .submit{grid-column:span 2;display:flex;justify-content:flex-end}
+
+    footer{display:flex;justify-content:space-between;align-items:center;padding:18px 12px;border-radius:12px;border:1px solid var(--glass-border);background:transparent}
+
+    .modal{position:fixed;inset:0;background:rgba(2,6,23,0.6);display:none;align-items:center;justify-content:center;padding:30px}
+    .modal.open{display:flex}
+    .modal-card{background:#061024;padding:22px;border-radius:16px;max-width:900px;width:100%;border:1px solid rgba(255,255,255,0.04)}
+
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr}
+      .projects-grid{grid-template-columns:repeat(2,1fr)}
+      .grid-3{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:620px){
+      nav{display:none}
+      .projects-grid{grid-template-columns:1fr}
+      form{grid-template-columns:1fr}
+      body{padding:20px}
+    }
+
+    .fade-in{animation:fadeIn .9s ease both}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+    .mono{font-family:'JetBrains Mono',monospace}
+
+    .repo-link {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: rgba(255,255,255,0.1);
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 13px;
+  color: var(--accent1);
+  text-decoration: none;
+  transition: background 0.3s ease;
+  z-index: 2;
+}
+
+.repo-link:hover {
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+}
+
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo mono">SC</div>
+        <div>
+          <h1>Sacha CLEMENT</h1>
+          <div class="muted">Développeur Web · Autoentrepreneur</div>
+        </div>
+      </div>
+      <nav aria-label="Navigation principale">
+        <a href="#projets">Projets</a>
+        <a href="#competences">Compétences</a>
+        <a href="#apropos">À propos</a>
+      </nav>
+      <div class="controls">
+        <a class="btn" href="#contact">Contactez-moi</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero fade-in" aria-labelledby="intro">
+        <div class="intro">
+          <h2 id="intro">Bienvenue   je suis <span style="background:linear-gradient(90deg,var(--accent1),var(--accent2));-webkit-background-clip:text;color:transparent">Sacha CLEMENT     </span></h2>
+          <p class="muted">Étudiant en Master spécialisé dans le développement web et la gestion de projets numériques. J’aime transformer les idées en produits web performants, élégants et orientés utilisateur.</p>
+          <div class="cta">
+            <a class="primary" href="#projets">Voir mes projets</a>
+            <a class="btn" href="/cv.pdf">Télécharger le CV</a>
+          </div>
+
+          <div style="margin-top:18px;color:var(--muted);font-size:14px">Tech stack: <span class="mono">HTML · CSS · JS · Python · Java · SQL </span></div>
+        </div>
+
+        <aside class="profile">
+          <div class="avatar" role="img" aria-label="Portrait : Votre Nom"></div>
+          <div class="title">
+            <h3>Sacha CLEMENT </h3>
+            <div class="meta">Chef de projet web</div>
+          </div>
+
+        </aside>
+      </section>
+
+      <section id="projets" aria-labelledby="titre-projets">
+        <h3 id="titre-projets">Projets récents</h3>
+        <p class="muted">Sélection de travaux — cliquez pour en voir plus.</p>
+
+        <div class="projects-grid" style="margin-top:12px">
+          
+<article class="project" 
+         data-title="Bataille de carte" 
+         data-desc="Le projet réalisé est un jeu de bataille de carte entre 2 joueurs prédéfinis. Chaque manche, les joueurs piochent une carte et comparent la carte tiré. La carte ayant la valeur la plus haute fait gagner 1 point au joueur. Si les cartes sont de même valeur, il y a match nul. Chaque point est compté et la personne ayant gagné le plus de manches remporte la partie." 
+         data-stack="Java · GitHub" 
+         tabindex="0"
+         onclick="openModal(this)">
+  
+  <div class="overlay"></div>
+  <img src="bataille.jpg" alt="Aperçu du projet Bataille de carte" class="project-image">
+  
+  <h4>Bataille de carte</h4>
+  <div class="meta muted">Réalisé en Octobre 2024</div>
+  <div class="tags">
+    <span class="tag">Java</span>
+    <span class="tag">GitHub</span>
+  </div>
+  
+  <a href="https://github.com/Sachou914/Java.Bataille" 
+     target="_blank" 
+     class="repo-link" 
+     onclick="event.stopPropagation()">Voir le dépôt</a>
+</article>
+
+
+
+
+
+       <article class="project" 
+         data-title="Paint" 
+         data-desc="Ce projet est une application graphique développée en Java permettant de dessiner, manipuler et sauvegarder des créations visuelles. Elle offre une interface intuitive avec un éventail d'outils de dessin et de personnalisation pour libérer votre créativité."
+         data-stack="Java · GitHub" 
+         tabindex="0"
+         onclick="openModal(this)">
+  
+  <div class="overlay"></div>
+  <img src="paint.jpg" alt="Aperçu du projet Paint" class="project-image">
+  
+  <h4>Paint</h4>
+  <div class="meta muted">Réalisé en Décembre 2024</div>
+  <div class="tags">
+    <span class="tag">Java</span>
+    <span class="tag">GitHub</span>
+  </div>
+  
+  <a href="https://github.com/Sachou914/Paint" 
+     target="_blank" 
+     class="repo-link" 
+     onclick="event.stopPropagation()">Voir le dépôt</a>
+</article>
+
+
+<article class="project" 
+         data-title="Space Invaders" 
+         data-desc="Un jeu de type Space Invaders développé en Java avec la librairie OpenGL. L'objectif principal est de survivre le plus longtemps possible tout en marquant le plus de points."
+         data-stack="Java · OpenGL · GitHub" 
+         tabindex="0"
+         onclick="openModal(this)">
+  
+  <div class="overlay"></div>
+  <img src="space-invaders.png" alt="Aperçu du projet Paint" class="project-image">
+  
+  <h4>Space Invaders</h4>
+  <div class="meta muted">Réalisé en Janvier 2025</div>
+  <div class="tags">
+    <span class="tag">Java</span>
+    <span class="tag">OpenGL</span>
+    <span class="tag">GitHub</span>
+  </div>
+  
+  <a href="https://github.com/Sachou914/Space-Invaders-OpenGL" 
+     target="_blank" 
+     class="repo-link" 
+     onclick="event.stopPropagation()">Voir le dépôt</a>
+</article>
+
+ 
+
+
+        </div>
+      </section>
+
+      <section id="competences" aria-labelledby="titre-competences">
+        <h3 id="titre-competences">Compétences</h3>
+        <div class="muted">Technique, design et méthode.</div>
+        <div class="skills" style="margin-top:14px">
+          <div class="skill card">
+            <svg viewBox="0 0 36 36"><path d="M18 2.0845a15.9155 15.9155 0 1 0 0 31.831 15.9155 15.9155 0 1 0 0-31.831" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="4"></path><path stroke="var(--accent1)" stroke-width="4" stroke-dasharray="90,100" stroke-linecap="round" fill="none" d="M18 2.0845a15.9155 15.9155 0 1 0 0 31.831"></path><text x="18" y="21" text-anchor="middle" font-size="6" fill="white">50%</text></svg>
+            <div style="margin-top:8px;font-size:13px">Front-end</div>
+          </div>
+
+          <div class="skill card">
+            <svg viewBox="0 0 36 36"><path d="M18 2.0845a15.9155 15.9155 0 1 0 0 31.831" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="4"></path><path stroke="var(--accent2)" stroke-width="4" stroke-dasharray="70,100" stroke-linecap="round" fill="none" d="M18 2.0845a15.9155 15.9155 0 1 0 0 31.831"></path><text x="18" y="21" text-anchor="middle" font-size="6" fill="white">50%</text></svg>
+            <div style="margin-top:8px;font-size:13px">Back-end</div>
+          </div>
+
+          <div class="skill card">
+            <svg viewBox="0 0 36 36"><path d="M18 2.0845a15.9155 15.9155 0 1 0 0 31.831" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="4"></path><path stroke="white" stroke-width="4" stroke-dasharray="65,100" stroke-linecap="round" fill="none" d="M18 2.0845a15.9155 15.9155 0 1 0 0 31.831"></path><text x="18" y="21" text-anchor="middle" font-size="6" fill="white">50%</text></svg>
+            <div style="margin-top:8px;font-size:13px">SQL</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="apropos" aria-labelledby="titre-apropos">
+        <h3 id="titre-apropos">À propos</h3>
+        <div class="grid-3" style="margin-top:12px">
+          <div class="card">
+            <h4>Approche</h4>
+            <p class="muted">....</p>
+          </div>
+          <div class="card">
+            <h4>Process</h4>
+            <p class="muted">...</p>
+          </div>
+          <div class="card">
+            <h4>Outils</h4>
+            <p class="muted">...</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" aria-labelledby="titre-contact">
+        <h3 id="titre-contact">Contact</h3>
+        <p class="muted">Discutons de votre projet — ou simplement dites bonjour.</p>
+
+        <form onsubmit="sendContact(event)">
+          <input type="text" name="nom" placeholder="Votre nom" required />
+          <input type="email" name="email" placeholder="Votre email" required />
+          <textarea name="message" placeholder="Votre message" required></textarea>
+          <div class="submit">
+            <button class="primary" type="submit">Envoyer</button>
+          </div>
+        </form>
+      </section>
+
+    </main>
+
+    <footer>
+      <div class="muted">© <span id="annee"></span> Sacha CLEMENT  — Tous droits réservés</div>
+      <div style="display:flex;gap:10px;align-items:center">
+        <a class="muted" href="https://github.com/Sachou914">GitHub</a>
+        <a class="muted" href="https://www.linkedin.com/in/sacha-clement-0a0557265/">LinkedIn</a>
+      </div>
+    </footer>
+
+  </div>
+
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-card">
+      <button id="modalClose" class="btn" style="float:right">Fermer</button>
+      <h3 id="modalTitle">Titre</h3>
+      <p id="modalDesc" class="muted">Description</p>
+      <div id="modalStack" style="margin-top:12px" class="muted">Stack</div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('annee').textContent = new Date().getFullYear();
+
+
+
+    const modal = document.getElementById('modal');
+    function openModal(el){
+      const title = el.dataset.title || 'Projet';
+      const desc = el.dataset.desc || '';
+      const stack = el.dataset.stack || '';
+      document.getElementById('modalTitle').textContent = title;
+      document.getElementById('modalDesc').textContent = desc;
+      document.getElementById('modalStack').textContent = 'Stack : ' + stack;
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden','false');
+    }
+    document.getElementById('modalClose').addEventListener('click',()=>{modal.classList.remove('open');modal.setAttribute('aria-hidden','true')});
+    modal.addEventListener('click', (e)=>{if(e.target===modal){modal.classList.remove('open');modal.setAttribute('aria-hidden','true')}});
+
+    function sendContact(e){
+      e.preventDefault();
+      const f = e.target;
+      const nom = encodeURIComponent(f.nom.value);
+      const email = encodeURIComponent(f.email.value);
+      const message = encodeURIComponent(f.message.value);
+      const subject = encodeURIComponent('Contact depuis le portfolio — ' + nom);
+      window.location.href = `mailto:contact@votredomaine.com?subject=${subject}&body=${message}%0A%0A--%0A${nom}%20|%20${email}`;
+    }
+
+    document.querySelectorAll('.project').forEach(p=>{
+      p.addEventListener('keydown',(ev)=>{
+        if(ev.key==='Enter' || ev.key===' ') openModal(p);
+      })
+    });
+
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){entry.target.classList.add('fade-in')}    
+      });
+    },{threshold:0.12});
+    document.querySelectorAll('section, .project').forEach(el=>observer.observe(el));
+  </script>
+</body>
+</html>
